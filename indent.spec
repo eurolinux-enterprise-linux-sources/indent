@@ -2,7 +2,7 @@
 Summary: A GNU program for formatting C code
 Name: indent
 Version: 2.2.10
-Release: 5.1%{?dist}
+Release: 7%{?dist}
 License: GPLv3+
 Group: Applications/Text
 URL: http://indent.isidore-it.eu/beautify.html
@@ -11,6 +11,12 @@ Patch3: indent-2.2.9-explicits.patch
 Patch4: indent-2.2.9-cdw.patch
 Patch5: indent-2.2.9-lcall.patch
 Patch7: indent-2.2.9-man.patch
+# Bug 733265, submitted to upstream
+# <https://lists.gnu.org/archive/html/bug-indent/2011-08/msg00000.html>
+Patch8: indent-2.2.10-Do-not-split-decimal-float-suffix-from-constant.patch
+# Bug 784304, submitted to upstream
+# <http://lists.gnu.org/archive/html/bug-indent/2012-02/msg00000.html>
+Patch9: indent-2.2.10-Return-non-zero-exit-code-on-tests-failure.patch
 BuildRequires: gettext texinfo texi2html
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires(post): /sbin/install-info
@@ -31,6 +37,8 @@ you want a program to format your code.
 %patch4 -p1
 %patch5 -p1
 %patch7 -p1
+%patch8 -p1 -b .float_suffix
+%patch9 -p1 -b .exit_code
 
 %build
 %configure
@@ -70,6 +78,12 @@ fi
 
 
 %changelog
+* Thu Feb 02 2012 Petr Pisar <ppisar@redhat.com> - 2.2.10-7
+- Return non-zero exit code on tests failure (Resolves: #784304)
+
+* Wed Jan 04 2012 Petr Pisar <ppisar@redhat.com> - 2.2.10-6
+- Fix decimal float constant suffixes (Resolves: #733265)
+
 * Mon Nov 30 2009 Dennis Gregorovic <dgregor@redhat.com> - 2.2.10-5.1
 - Rebuilt for RHEL 6
 
