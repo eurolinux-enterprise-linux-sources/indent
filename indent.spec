@@ -2,7 +2,7 @@
 Summary: A GNU program for formatting C code
 Name: indent
 Version: 2.2.11
-Release: 11%{?dist}
+Release: 13%{?dist}
 License: GPLv3+
 Group: Applications/Text
 URL: http://indent.isidore-it.eu/beautify.html
@@ -83,6 +83,12 @@ fi
 
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.2.11-13
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.2.11-12
+- Mass rebuild 2013-12-27
+
 * Tue Mar 26 2013 Petr Pisar <ppisar@redhat.com> - 2.2.11-11
 - Update config.sub to support aarch64 (bug #925588)
 
